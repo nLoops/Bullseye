@@ -28,54 +28,76 @@ struct ContentView: View {
             Color("BackgroundColor")
                 .edgesIgnoringSafeArea(/*@START_MENU_TOKEN@*/.all/*@END_MENU_TOKEN@*/)
             VStack {
-                Text("🎯🎯🎯 \nPUT THE BULLSEYE AS CLOSE AS YOU CAN TO")
-                    .bold()
-                    .kerning(2.0)
-                    .multilineTextAlignment(.center)
-                    .lineSpacing(4.0)
-                    .font(.footnote)
-                    .foregroundColor(Color("TextColor"))
-                
-                
-                Text(String(self.game.target))
-                    .kerning(-1.0)
-                    .font(.largeTitle)
-                    .fontWeight(.black)
-                    .foregroundColor(Color("TextColor"))
-                
-                HStack {
-                    Text("1")
-                        .bold()
-                        .foregroundColor(Color("TextColor"))
-                    Slider(value: self.$sliderValue,in: 1.0...100.0)
-                    Text("100")
-                        .bold()
-                        .foregroundColor(Color("TextColor"))
-                }.padding()
-                Button(action: {
-                    self.isAlertVisible = true
-                }) {
-                    Text("Hit me".uppercased())
-                        .bold()
-                        .font(.title3)
-                }
-                .padding(20.0)
-                .background(
-                    ZStack {
-                        Color("ButtonColor")
-                        LinearGradient(gradient: Gradient(colors: [Color.white.opacity(0.3), Color.clear]), startPoint: .top, endPoint: .bottom)
-                    }
-                )
-                .foregroundColor(Color.white)
-                .cornerRadius(21.0)
-                
-                .alert(isPresented: $isAlertVisible, content: {
-                    let roundedValue = Int(self.sliderValue.rounded())
-                    return Alert(title: Text("Hello There!"),message: Text("The slide value is \(self.game.points(sliderValue:roundedValue))."),dismissButton: .default(Text("OK")))
-                })
+                InstructionsView(game: $game)
+                SliderView(sliderValue: $sliderValue)
+                HitMeButton(isAlertVisible: $isAlertVisible, sliderValue: $sliderValue, game: $game)
                 
             }
         }
+    }
+}
+
+struct InstructionsView:View {
+    @Binding var game:Game
+    
+    var body: some View{
+        VStack{
+            InstructionText(text: "🎯🎯🎯 \nPUT THE BULLSEYE AS CLOSE AS YOU CAN TO")
+                .padding(.leading,30.0)
+                .padding(.trailing,30.0)
+            
+            BigNumberText(text: String(game.target))
+        }
+    }
+}
+
+
+struct SliderView : View{
+    @Binding var sliderValue : Double
+    
+    var body: some View{
+        HStack {
+            Text("1")
+                .bold()
+                .foregroundColor(Color("TextColor"))
+            Slider(value: self.$sliderValue,in: 1.0...100.0)
+            Text("100")
+                .bold()
+                .foregroundColor(Color("TextColor"))
+        }.padding()
+    }
+    
+}
+
+struct HitMeButton:View {
+    @Binding var isAlertVisible:Bool
+    @Binding var sliderValue:Double
+    @Binding var game:Game
+    
+    var body: some View{
+        Button(action: {
+            self.isAlertVisible = true
+        }) {
+            Text("Hit me".uppercased())
+                .bold()
+                .font(.title3)
+        }
+        .padding(20.0)
+        .background(
+            ZStack {
+                Color("ButtonColor")
+                LinearGradient(gradient: Gradient(colors: [Color.white.opacity(0.3), Color.clear]), startPoint: .top, endPoint: .bottom)
+            }
+        )
+        .foregroundColor(Color.white)
+        .cornerRadius(21.0)
+        .overlay(RoundedRectangle(
+                    cornerRadius: 21.0)
+                    .strokeBorder(Color.white,lineWidth: 2.0))
+        .alert(isPresented: $isAlertVisible, content: {
+            let roundedValue = Int(self.sliderValue.rounded())
+            return Alert(title: Text("Hello There!"),message: Text("The slide value is \(self.game.points(sliderValue:roundedValue))."),dismissButton: .default(Text("OK")))
+        })
     }
 }
 
