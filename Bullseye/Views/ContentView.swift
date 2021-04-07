@@ -25,8 +25,9 @@ struct ContentView: View {
             // Value from 0 to 1 to calculate the color
             // will be 243.0 / 255.0
             // or we could add it to Assets Catalog for global useage
-            Color("BackgroundColor")
-                .edgesIgnoringSafeArea(/*@START_MENU_TOKEN@*/.all/*@END_MENU_TOKEN@*/)
+            //            Color("BackgroundColor")
+            //                .edgesIgnoringSafeArea(/*@START_MENU_TOKEN@*/.all/*@END_MENU_TOKEN@*/)
+            BackgroundView(game: $game)
             VStack {
                 InstructionsView(game: $game)
                 SliderView(sliderValue: $sliderValue)
@@ -60,10 +61,12 @@ struct SliderView : View{
             Text("1")
                 .bold()
                 .foregroundColor(Color("TextColor"))
+                .frame(width: 35.0)
             Slider(value: self.$sliderValue,in: 1.0...100.0)
             Text("100")
                 .bold()
                 .foregroundColor(Color("TextColor"))
+                .frame(width: 35.0)
         }.padding()
     }
     
