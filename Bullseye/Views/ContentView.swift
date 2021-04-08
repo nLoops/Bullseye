@@ -30,10 +30,10 @@ struct ContentView: View {
             BackgroundView(game: $game)
             VStack {
                 InstructionsView(game: $game)
-                SliderView(sliderValue: $sliderValue)
+                    .padding(.bottom,100.0)
                 HitMeButton(isAlertVisible: $isAlertVisible, sliderValue: $sliderValue, game: $game)
-                
             }
+            SliderView(sliderValue: $sliderValue)
         }
     }
 }
