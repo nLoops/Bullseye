@@ -29,11 +29,21 @@ struct ContentView: View {
             //                .edgesIgnoringSafeArea(/*@START_MENU_TOKEN@*/.all/*@END_MENU_TOKEN@*/)
             BackgroundView(game: $game)
             VStack {
+                let padding = isAlertVisible ? 0 : 100
+                
                 InstructionsView(game: $game)
-                    .padding(.bottom,100.0)
-                HitMeButton(isAlertVisible: $isAlertVisible, sliderValue: $sliderValue, game: $game)
+                    .padding(.bottom,CGFloat(padding))
+                if(isAlertVisible){
+                    PointsView(isAlertVisible: $isAlertVisible, sliderValue: $sliderValue, game: $game)
+                        .transition(.scale)
+                }else{
+                    HitMeButton(isAlertVisible: $isAlertVisible, sliderValue: $sliderValue, game: $game)
+                        .transition(.scale)
+                }
             }
-            SliderView(sliderValue: $sliderValue)
+            if !isAlertVisible{
+                SliderView(sliderValue: $sliderValue).transition(.scale)
+            }
         }
     }
 }
@@ -79,7 +89,9 @@ struct HitMeButton:View {
     
     var body: some View{
         Button(action: {
-            self.isAlertVisible = true
+            withAnimation{
+                self.isAlertVisible = true
+            }
         }) {
             Text("Hit me".uppercased())
                 .bold()
@@ -97,14 +109,6 @@ struct HitMeButton:View {
         .overlay(RoundedRectangle(
                     cornerRadius: 21.0)
                     .strokeBorder(Color.white,lineWidth: 2.0))
-        .alert(isPresented: $isAlertVisible, content: {
-            let roundedValue = Int(self.sliderValue.rounded())
-            let points = game.points(sliderValue: roundedValue)
-            
-            return Alert(title: Text("Hello There!"),message: Text("The slide value is \(points)."),dismissButton: .default(Text("Awesome!")){
-                game.startNewRound(points: points)
-            })
-        })
     }
 }
 

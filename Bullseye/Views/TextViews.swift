@@ -47,12 +47,42 @@ struct LabelTextView:View {
     }
 }
 
+struct BodyText:View {
+    var label:String
+    
+    var body: some View{
+        Text(label)
+            .font(.subheadline)
+            .fontWeight(.semibold)
+            .multilineTextAlignment(.center)
+            .lineSpacing(12.0)
+    }
+}
+
+struct ButtonText:View {
+    var label:String
+    
+    var body: some View{
+        Text(label)
+            .bold()
+            .frame(maxWidth:.infinity)
+            .padding()
+            .background(Color.accentColor)
+            .foregroundColor(.white)
+            .cornerRadius(12.0)
+        
+    }
+}
+
 struct TextViews_Previews: PreviewProvider {
     static var previews: some View {
         VStack{
             InstructionText(text: "Instructions")
             BigNumberText(text: "999")
             LabelTextView(label: "round")
-        }
+            // To show emojis lis hit [ctrl + cmd + space]
+            BodyText(label: "You scored 200 Points\n 🎉🎉🎉")
+            ButtonText(label: "Start New Round")
+        }.padding()
     }
 }
