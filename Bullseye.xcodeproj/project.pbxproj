@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		E2A265882618E69B003E7815 /* Game.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2A265872618E69B003E7815 /* Game.swift */; };
 		E2D499532621772A00F467BC /* PointsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2D499522621772A00F467BC /* PointsView.swift */; };
+		E2DF5C35262987E4003A734C /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2DF5C34262987E4003A734C /* Constants.swift */; };
 		E2E2DEE926178E7B00272B0C /* BullseyeApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2E2DEE826178E7B00272B0C /* BullseyeApp.swift */; };
 		E2E2DEEB26178E7B00272B0C /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2E2DEEA26178E7B00272B0C /* ContentView.swift */; };
 		E2E2DEED26178E7C00272B0C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E2E2DEEC26178E7C00272B0C /* Assets.xcassets */; };
@@ -41,6 +42,7 @@
 /* Begin PBXFileReference section */
 		E2A265872618E69B003E7815 /* Game.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Game.swift; sourceTree = "<group>"; };
 		E2D499522621772A00F467BC /* PointsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PointsView.swift; sourceTree = "<group>"; };
+		E2DF5C34262987E4003A734C /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		E2E2DEE526178E7B00272B0C /* Bullseye.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Bullseye.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E2E2DEE826178E7B00272B0C /* BullseyeApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BullseyeApp.swift; sourceTree = "<group>"; };
 		E2E2DEEA26178E7B00272B0C /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -88,6 +90,7 @@
 			isa = PBXGroup;
 			children = (
 				E2A265872618E69B003E7815 /* Game.swift */,
+				E2DF5C34262987E4003A734C /* Constants.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -307,6 +310,7 @@
 				E2D499532621772A00F467BC /* PointsView.swift in Sources */,
 				E2F0F47E261D75D200116065 /* BackgroundView.swift in Sources */,
 				E2F69900261B953F00E180AA /* Shapes.swift in Sources */,
+				E2DF5C35262987E4003A734C /* Constants.swift in Sources */,
 				E2A265882618E69B003E7815 /* Game.swift in Sources */,
 				E2E2DEE926178E7B00272B0C /* BullseyeApp.swift in Sources */,
 			);
