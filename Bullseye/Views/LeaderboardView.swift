@@ -8,12 +8,14 @@
 import SwiftUI
 
 struct LeaderboardView: View {
+    @Binding var isLeaderboardShowing:Bool
+    
     var body: some View {
         ZStack {
             Color("BackgroundColor")
                 .edgesIgnoringSafeArea(.all)
             VStack(spacing:10) {
-                HeaderView()
+                HeaderView(isLeaderboardShowing: $isLeaderboardShowing)
                 LabelView()
                 RowView(index: 1, score: 10, date: Date())
             }
@@ -45,12 +47,31 @@ struct RowView: View {
 }
 
 struct HeaderView:View {
+    
+    @Binding var isLeaderboardShowing:Bool
+    
+    // Here we call env vars to detect space into Portrait and Landscape mode
+    // For more info about SizeClasses check this website
+    // https://useyourloaf.com/blog/size-classes/
+    
+    @Environment(\.verticalSizeClass) var verticalSizeClass
+    @Environment(\.horizontalSizeClass) var horizontalSizeClass
+    
+    
     var body: some View{
         ZStack {
-            BigBoldText(text: "Leaderboard")
+            HStack {
+                if verticalSizeClass == .regular &&
+                    horizontalSizeClass == .compact{
+                    BigBoldText(text: "Leaderboard").padding(.leading)
+                    Spacer()
+                }else{
+                    BigBoldText(text: "Leaderboard")
+                }
+            }
             HStack{
                 Spacer()
-                Button(action: {}) {
+                Button(action: {isLeaderboardShowing = false}) {
                     RoundedImageViewFilled(systemName: "xmark")
                         .padding(.trailing)
                 }
@@ -77,18 +98,20 @@ struct LabelView:View {
 }
 
 struct LeaderboardView_Previews: PreviewProvider {
+    static private var isLeaderboardShowing = Binding.constant(false)
+    
     static var previews: some View {
         
         // For Light Mode View
-        LeaderboardView()
-        LeaderboardView()
+        LeaderboardView(isLeaderboardShowing: isLeaderboardShowing)
+        LeaderboardView(isLeaderboardShowing: isLeaderboardShowing)
             .previewLayout(.fixed(width: 568
                                   , height: 320))
         
         // For Dark Mode View
-        LeaderboardView()
+        LeaderboardView(isLeaderboardShowing: isLeaderboardShowing)
             .preferredColorScheme(.dark)
-        LeaderboardView()
+        LeaderboardView(isLeaderboardShowing: isLeaderboardShowing)
             .preferredColorScheme(.dark)
             .previewLayout(.fixed(width: 568
                                   , height: 320))
