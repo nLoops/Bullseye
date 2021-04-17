@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		E2A265882618E69B003E7815 /* Game.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2A265872618E69B003E7815 /* Game.swift */; };
+		E2A5EADE262AEC2600E06786 /* LeaderboardEntry.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2A5EADD262AEC2600E06786 /* LeaderboardEntry.swift */; };
 		E2D499532621772A00F467BC /* PointsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2D499522621772A00F467BC /* PointsView.swift */; };
 		E2DF5C35262987E4003A734C /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2DF5C34262987E4003A734C /* Constants.swift */; };
 		E2DF5C3D26298D80003A734C /* LeaderboardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2DF5C3C26298D80003A734C /* LeaderboardView.swift */; };
@@ -42,6 +43,7 @@
 
 /* Begin PBXFileReference section */
 		E2A265872618E69B003E7815 /* Game.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Game.swift; sourceTree = "<group>"; };
+		E2A5EADD262AEC2600E06786 /* LeaderboardEntry.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LeaderboardEntry.swift; sourceTree = "<group>"; };
 		E2D499522621772A00F467BC /* PointsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PointsView.swift; sourceTree = "<group>"; };
 		E2DF5C34262987E4003A734C /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		E2DF5C3C26298D80003A734C /* LeaderboardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LeaderboardView.swift; sourceTree = "<group>"; };
@@ -93,6 +95,7 @@
 			children = (
 				E2A265872618E69B003E7815 /* Game.swift */,
 				E2DF5C34262987E4003A734C /* Constants.swift */,
+				E2A5EADD262AEC2600E06786 /* LeaderboardEntry.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -315,6 +318,7 @@
 				E2F0F47E261D75D200116065 /* BackgroundView.swift in Sources */,
 				E2F69900261B953F00E180AA /* Shapes.swift in Sources */,
 				E2DF5C35262987E4003A734C /* Constants.swift in Sources */,
+				E2A5EADE262AEC2600E06786 /* LeaderboardEntry.swift in Sources */,
 				E2A265882618E69B003E7815 /* Game.swift in Sources */,
 				E2E2DEE926178E7B00272B0C /* BullseyeApp.swift in Sources */,
 			);

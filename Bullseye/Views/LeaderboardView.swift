@@ -9,6 +9,7 @@ import SwiftUI
 
 struct LeaderboardView: View {
     @Binding var isLeaderboardShowing:Bool
+    @Binding var game:Game
     
     var body: some View {
         ZStack {
@@ -17,7 +18,15 @@ struct LeaderboardView: View {
             VStack(spacing:10) {
                 HeaderView(isLeaderboardShowing: $isLeaderboardShowing)
                 LabelView()
-                RowView(index: 1, score: 10, date: Date())
+                
+                ScrollView{
+                    VStack(spacing:10){
+                        ForEach(game.leaderboardArray.indices){ i in
+                            let leaderboardEntry = game.leaderboardArray[i]
+                            RowView(index: i+1, score: leaderboardEntry.score, date: leaderboardEntry.date)
+                        }
+                    }
+                }
             }
         }
     }
@@ -69,6 +78,7 @@ struct HeaderView:View {
                     BigBoldText(text: "Leaderboard")
                 }
             }
+            .padding(.top)
             HStack{
                 Spacer()
                 Button(action: {isLeaderboardShowing = false}) {
@@ -99,19 +109,20 @@ struct LabelView:View {
 
 struct LeaderboardView_Previews: PreviewProvider {
     static private var isLeaderboardShowing = Binding.constant(false)
+    static private var game = Binding.constant(Game(loadTestData: true))
     
     static var previews: some View {
         
         // For Light Mode View
-        LeaderboardView(isLeaderboardShowing: isLeaderboardShowing)
-        LeaderboardView(isLeaderboardShowing: isLeaderboardShowing)
+        LeaderboardView(isLeaderboardShowing: isLeaderboardShowing,game: game)
+        LeaderboardView(isLeaderboardShowing: isLeaderboardShowing,game: game)
             .previewLayout(.fixed(width: 568
                                   , height: 320))
         
         // For Dark Mode View
-        LeaderboardView(isLeaderboardShowing: isLeaderboardShowing)
+        LeaderboardView(isLeaderboardShowing: isLeaderboardShowing,game: game)
             .preferredColorScheme(.dark)
-        LeaderboardView(isLeaderboardShowing: isLeaderboardShowing)
+        LeaderboardView(isLeaderboardShowing: isLeaderboardShowing,game: game)
             .preferredColorScheme(.dark)
             .previewLayout(.fixed(width: 568
                                   , height: 320))
